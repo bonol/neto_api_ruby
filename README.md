@@ -1,38 +1,47 @@
-# NetoApiRuby
+# Neto API in Ruby
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/neto_api_ruby`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A thin Ruby wrapper for connecting to NETO REST API. Easily interact with the NETO API using this library.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'neto_api_ruby'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
     $ gem install neto_api_ruby
 
-## Usage
+## Getting started
 
-TODO: Write usage instructions here
+Generate API credentials (API secure key) following this instructions 
+https://www.neto.com.au/api
+API endpoints, filters and output selector can also be found on the page above.
 
-## Development
+## Setup
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Setup for the new NETO API integration:
+```ruby
+require "neto_api_ruby"
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+neto = NetoApiRuby::API.new(neto_host_url, api_key)
+```
+
+##Methods
+
+|   Params   |   Type   |                         Description                          | 		Example				 |
+| ---------- | -------- | ------------------------------------------------------------ | --------------------------- |
+| `query`    | `Hash`   | For get products, data field filter should be specified.     | {"InventoryID"=> ["100"]}   |
+|            |          | By default IsActive Filter is specified.                     | 							 |
+
+### get_products
+- `.get_products(query)`
+
+#### Response
+
+All methods will return [HTTParty::Response](https://github.com/jnunemaker/httparty) object.
+
+## Release History
+- 2017-02-08 - 0.0.1 - Beta release. Nothing will be there in the gem until version goes up to 0.1.1
+
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/neto_api_ruby. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/bonogit/neto_api_ruby. This project is for my own neto integration use. It also intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
