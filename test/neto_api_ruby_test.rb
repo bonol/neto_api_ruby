@@ -14,10 +14,10 @@ class NetoApiRubyTest < Minitest::Test
   	assert_equal false, response.parsed_response['Item'].nil?
   end
 
-  def test_get_first_item_id
+  def test_get_item_by_inventory_id
   	response = @neto.get_products({
-  		"InventoryID"=> ["100"]
+  		"InventoryID"=> ["101"]
   		})
-  	assert_equal '100', response.parsed_response['Item'].first['ID']
+  	assert_equal '101', response.parsed_response['Item'].first['ID']
   end
 end
