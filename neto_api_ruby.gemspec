@@ -36,5 +36,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "fakeweb", "~> 1.3.0"
   spec.add_runtime_dependency "httparty", "~> 0.14", ">= 0.14.0"
-  spec.add_runtime_dependency "json", "~> 2.0", ">= 2.0.0"
+  spec.add_runtime_dependency "json", "~> 2.0.3", ">= 2.0.0"
 end
