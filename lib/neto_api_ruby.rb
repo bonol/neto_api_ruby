@@ -22,6 +22,7 @@ module NetoApiRuby
                 "SKU",
                 "ParentSKU",
                 "InventoryID",
+                "Virtual",
                 "Name",
                 "Brand",
                 "Description",
@@ -51,7 +52,6 @@ module NetoApiRuby
   	def get_products query={} 
   		do_request :post, 'GetItem', query
   	end
-
 
   	protected
   	#Internal methods: Append data as query params to an endpoint
