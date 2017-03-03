@@ -15,7 +15,6 @@ module NetoApiRuby
   		  "NETOAPI_KEY" => api_key
   		}
   		@body_defaults = {
-		    # "Filter"=> {
 		        "IsActive"=> ["True"],
 		        "OutputSelector"=> [
 		            "ID",
@@ -42,9 +41,7 @@ module NetoApiRuby
                 "WarehouseQuantity",
                 "TaxInclusive"
 		        ]
-		    # }
-		}
-
+		  }
   	end
   	#public methods
   	#query    - A Hash with query params, insert into request body
@@ -53,9 +50,16 @@ module NetoApiRuby
   		do_request :post, 'GetItem', query
   	end
 
+    def create_product attributes={}
+      do_request :post, 'AddItem', attributes 
+    end
+
+    def update_product attributes={}
+      do_request :post, 'UpdateItem', attributes
+    end
+
   	protected
   	#Internal methods: Append data as query params to an endpoint
-
   	def do_request method, action, query={}
   	  url = @neto_url
   	  options = { }
@@ -65,14 +69,24 @@ module NetoApiRuby
   	  #set headers
   	  options[:headers] = @header_args.merge(header_action)
   	  #set body
-  	  if query.empty?
-	  	options.merge!(body: {"Filter"=> @body_defaults}.to_json)
-	  else 
-    	body_args = @body_defaults.merge(query) 
-    	options.merge!(body: {"Filter"=> body_args}.to_json)
-  	  end
-  	  HTTParty.send(method, url, options)
-  	end
+      case action
+      when 'GetItem'
+    	  if query.empty?
+    	  	options.merge!(body: {"Filter"=> @body_defaults}.to_json)
+    	  else 
+        	body_args = @body_defaults.merge(query) 
+        	options.merge!(body: {"Filter"=> body_args}.to_json)
+    	  end
+      when 'AddItem' 
+        options.merge!(body: {"Item"=> [query]}.to_json)     
+      when 'UpdateItem'
+        options.merge!(body: {"Item"=> [query]}.to_json) 
+      end
+      HTTParty.send(method, url, options)
+    end
 
   end
 end
+
+
+
