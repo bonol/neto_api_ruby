@@ -52,7 +52,7 @@ All methods will return [HTTParty::Response](https://github.com/jnunemaker/httpa
 
 ## Release History
 - 2017-02-08 - 0.0.1 - Beta release. 
-- 2017-02-08 - 0.0.5 - Beta release, only access product including create/update/search
+- 2017-03-03 - 0.0.5 - Beta release, only access product including create/update/search
 
 
 ## Contributing
