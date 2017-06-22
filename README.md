@@ -2,11 +2,16 @@
 
 A thin Ruby wrapper for connecting to NETO REST API. Easily interact with the NETO API using this library.
 
-This is hobby gem for personal use.
+This is an unofficial gem for NETO REST API.
+
+Not all endpoints are implemented yet, but you can help by submitting pull requests!
 
 ## Installation
 
     $ gem install neto_api_ruby
+
+## Resources
+-Products
 
 ## Getting started
 
